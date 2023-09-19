@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+</head>
+
+<body>
+    <form>
+        <input type="number" id="angka1"><br>
+        <input type="number" id="angka2"><br>
+        <input type="button" value="+" id="tambah">
+        <input type="button" value="-" id="kurang">
+        <input type="button" value="*" id="kali">
+        <input type="button" value="/" id="bagi">
+    </form>
+    <p id="result"></p>
+
+    <script>
+        const angka1Input = document.getElementById("angka1");
+        const angka2Input = document.getElementById("angka2");
+        const tambahButton = document.getElementById("tambah");
+        const kurangButton = document.getElementById("kurang");
+        const kaliButton = document.getElementById("kali");
+        const bagiButton = document.getElementById("bagi");
+        const submitButton = document.getElementById("submit");
+        const resultOutput = document.getElementById("result");
+
+        tambahButton.addEventListener("click", function () {
+            ngitung("+");
+        });
+
+        kurangButton.addEventListener("click", function () {
+            ngitung("-");
+        });
+
+        kaliButton.addEventListener("click", function () {
+            ngitung("*");
+        });
+
+        bagiButton.addEventListener("click", function () {
+            ngitung("/");
+        });
+
+        function ngitung(operator) {
+            const num1 = parseFloat(angka1Input.value);
+            const num2 = parseFloat(angka2Input.value);
+
+            let result;
+            switch (operator) {
+                case "+":
+                    result = num1 + num2;
+                    break;
+                case "-":
+                    result = num1 - num2;
+                    break;
+                case "*":
+                    result = num1 * num2;
+                    break;
+                case "/":
+                    if (num2 === 0) {
+                        resultOutput.textContent = "gabisa bang";
+                        return;
+                    }
+                    result = num1 / num2;
+                    break;
+                default:
+                    resultOutput.textContent = "gabisa bang";
+                    return;
+            }
+
+            resultOutput.textContent = "Hasil: " + result;
+        }
+
+    </script>
+</body>
+</html>
